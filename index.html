@@ -1,0 +1,459 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    overflow: hidden;
+    background: #080008;
+    color: white;
+}
+
+/* SLIDES */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.slide.active {
+    display: flex;
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* BACKGROUNDS */
+.slide1 {
+    background: radial-gradient(circle, #3b002b, #090009);
+}
+
+.slide2 {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
+
+.slide3 {
+    background: linear-gradient(135deg, #19001f, #73005c);
+}
+
+.slide4 {
+    background: linear-gradient(135deg, #33001b, #ff416c);
+}
+
+.slide5 {
+    background: radial-gradient(circle, #ff1744, #25000d);
+}
+
+/* TEXT */
+h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 650px;
+    padding: 15px;
+}
+
+/* MYSTERY BOX */
+.box-area {
+    cursor: pointer;
+}
+
+.box {
+    width: 180px;
+    height: 140px;
+    background: #e91e63;
+    position: relative;
+    margin: 30px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 40px #ff4081;
+    transition: .5s;
+}
+
+.box:hover {
+    transform: scale(1.08);
+}
+
+.box:before {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 140px;
+    background: #ffd54f;
+    left: 72px;
+}
+
+.box-lid {
+    width: 210px;
+    height: 45px;
+    background: #f50057;
+    position: absolute;
+    top: -35px;
+    left: -15px;
+    border-radius: 7px;
+    transition: 1s;
+}
+
+.open .box-lid {
+    transform: rotate(-25deg) translate(-25px, -40px);
+}
+
+.hint {
+    font-size: 18px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.08); }
+}
+
+/* PHOTOS */
+.photo {
+    width: 270px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 5px solid white;
+    box-shadow: 0 10px 40px rgba(0,0,0,.5);
+    animation: photoIn 1.2s;
+}
+
+@keyframes photoIn {
+    from {
+        transform: scale(.5) rotate(-10deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+/* PHOTO GRID */
+.photo-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.small-photo {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 4px solid white;
+}
+
+/* BUTTON */
+button {
+    border: none;
+    background: white;
+    color: #e91e63;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+/* BALLOONS */
+.balloon {
+    position: absolute;
+    bottom: -120px;
+    width: 55px;
+    height: 70px;
+    border-radius: 50%;
+    background: #ff4081;
+    animation: float 8s linear infinite;
+}
+
+.balloon:after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100px;
+    background: white;
+    top: 68px;
+    left: 27px;
+}
+
+.b1 { left: 5%; animation-delay: 0s; }
+.b2 { left: 20%; animation-delay: 2s; }
+.b3 { left: 40%; animation-delay: 4s; }
+.b4 { left: 65%; animation-delay: 1s; }
+.b5 { left: 85%; animation-delay: 3s; }
+
+@keyframes float {
+    from {
+        bottom: -120px;
+        transform: rotate(-5deg);
+    }
+    to {
+        bottom: 110%;
+        transform: rotate(10deg);
+    }
+}
+
+/* HEARTS */
+.heart {
+    position: absolute;
+    font-size: 25px;
+    animation: heartFloat 6s linear infinite;
+    bottom: -50px;
+}
+
+@keyframes heartFloat {
+    to {
+        bottom: 110%;
+        opacity: 0;
+    }
+}
+
+/* FINAL */
+.final {
+    font-size: 65px;
+    color: white;
+    text-shadow: 0 0 20px white, 0 0 40px #ff80ab;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="love-song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SLIDE 1 -->
+<section class="slide slide1 active" id="slide1">
+
+    <div class="content">
+
+        <h1>🎁 I Have A Surprise For You ❤️</h1>
+
+        <p>
+            There is something inside this box<br>
+            that I have been wanting to tell you...
+        </p>
+
+        <div class="box-area" onclick="openBox()">
+
+            <div class="box" id="box">
+                <div class="box-lid"></div>
+            </div>
+
+            <div class="hint">
+                ✨ Click the mystery box ✨
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SLIDE 2 -->
+<section class="slide slide2">
+
+    <div class="content">
+
+        <div class="balloon b1"></div>
+        <div class="balloon b2"></div>
+        <div class="balloon b3"></div>
+        <div class="balloon b4"></div>
+        <div class="balloon b5"></div>
+
+        <h1>🎈 And Then I Found You ❤️</h1>
+
+        <img src="photo1.jpg.png" class="photo">
+
+        <p>
+            Out of all the people in this world,<br>
+            somehow my heart chose you. ❤️
+        </p>
+
+        <button onclick="nextSlide()">Next ❤️</button>
+
+    </div>
+
+</section>
+
+
+<!-- SLIDE 3 -->
+<section class="slide slide3">
+
+    <div class="content">
+
+        <h1>💕 My Favorite Person</h1>
+
+        <img src="photo2.jpg.png" class="photo">
+
+        <p>
+            You are not just someone I love...<br>
+            You are someone who makes my ordinary days<br>
+            feel incredibly special. 🥹❤️
+        </p>
+
+        <button onclick="nextSlide()">Keep going 💕</button>
+
+    </div>
+
+</section>
+
+
+<!-- SLIDE 4 -->
+<section class="slide slide4">
+
+    <div class="content">
+
+        <h1>🥰 A Little Collection Of You</h1>
+
+        <div class="photo-grid">
+
+            <img src="photo3.jpg.png" class="small-photo">
+            <img src="photo4.jpg.png" class="small-photo">
+
+        </div>
+
+        <p>
+            Every picture reminds me of one thing...<br>
+            I am so lucky to have you in my life. ❤️
+        </p>
+
+        <button onclick="nextSlide()">One last surprise 💖</button>
+
+    </div>
+
+</section>
+
+
+<!-- SLIDE 5 -->
+<section class="slide slide5">
+
+    <div class="content">
+
+        <img src="photo5.jpg.png" class="photo">
+
+        <h1 class="final">I LOVE YOU ❤️</h1>
+
+        <p>
+            Today, tomorrow, and every day after that...<br>
+            I will choose you again and again. 💕
+        </p>
+
+        <p>
+            You are my favorite person,<br>
+            my favorite memory,<br>
+            and my favorite future. ❤️
+        </p>
+
+        <button onclick="createHearts()">💖 One More Surprise</button>
+
+    </div>
+
+</section>
+
+
+<script>
+
+let currentSlide = 0;
+
+const slides = document.querySelectorAll(".slide");
+
+function openBox() {
+
+    document.getElementById("box").classList.add("open");
+
+    // Start song after user interaction
+    document.getElementById("music").play();
+
+    setTimeout(() => {
+        nextSlide();
+    }, 1800);
+}
+
+function nextSlide() {
+
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+        currentSlide = slides.length - 1;
+    }
+
+    slides[currentSlide].classList.add("active");
+}
+
+function createHearts() {
+
+    for(let i = 0; i < 30; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = "❤️";
+
+        heart.style.left = Math.random() * 100 + "%";
+
+        heart.style.animationDelay =
+            Math.random() * 3 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+}
+
+
+</script>
+
+</body>
+</html>
+```
